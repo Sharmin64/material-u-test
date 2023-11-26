@@ -1,6 +1,14 @@
 import styled from "@emotion/styled";
-import {Castle} from "@mui/icons-material";
-import {AppBar, Box, Toolbar, Typography} from "@mui/material";
+import {Castle, Mail, Notifications} from "@mui/icons-material";
+import {
+  AppBar,
+  Avatar,
+  Badge,
+  Box,
+  InputBase,
+  Toolbar,
+  Typography,
+} from "@mui/material";
 import React from "react";
 
 const StyledToolbar = styled(Toolbar)({
@@ -16,10 +24,20 @@ const Search = styled("div")(({theme}) => ({
   borderStartEndRadius: "10px",
 }));
 const Icon = styled(Box)(({theme}) => ({
-  backgroundColor: "green",
-  padding: "0 6px",
-  borderEndStartRadius: "8px",
-  borderStartEndRadius: "8px",
+  display: "flex",
+  gap: "20px",
+  alignItems: "center",
+  [theme.breakpoints.up("sm")]: {
+    display: "flex",
+  },
+}));
+const UserBox = styled(Box)(({theme}) => ({
+  display: "flex",
+  gap: "10px",
+  alignItems: "center",
+  [theme.breakpoints.up("sm")]: {
+    display: "none",
+  },
 }));
 
 const Navbar = () => {
@@ -30,8 +48,28 @@ const Navbar = () => {
           Liza Dev
         </Typography>
         <Castle sx={{display: {xs: "block", sm: "none"}}} />.
-        <Search>Search </Search>
-        <Icon>Icon</Icon>
+        <Search>
+          <InputBase placeholder="Search..." />
+        </Search>
+        <Icon>
+          <Badge badgeContent={4} color="success">
+            <Mail />
+          </Badge>
+          <Badge badgeContent={4} color="error">
+            <Notifications />
+          </Badge>
+          <Avatar
+            sx={{width: 30, height: 30}}
+            src="https://i.ibb.co/Fxbm06w/berbie-Black.jpg"
+          />
+        </Icon>
+        <UserBox>
+          <Avatar
+            sx={{width: 30, height: 30}}
+            src="https://i.ibb.co/Fxbm06w/berbie-Black.jpg"
+          />
+          <Typography varient="span">LiZa</Typography>
+        </UserBox>
       </StyledToolbar>
     </AppBar>
   );
